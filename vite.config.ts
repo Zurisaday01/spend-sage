@@ -37,6 +37,8 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
+			util: 'rollup-plugin-node-polyfills/polyfills/util',
+			sys: 'util',
 		},
 	},
 });
