@@ -40,6 +40,7 @@ const AppLayout = () => {
 			<Header setIsOpen={setIsOpen} isOpen={isOpen} />
 			<Sidebar isOpen={isOpen} />
 			<main className='col-[2_/_-1] row-[2_/_-1] overflow-y-auto'>
+				
 				<div className='w-max-[1200px] my-0 mx-auto flex flex-col gap-[32px] px-6 py-6 sm:px-12 sm:py-8'>
 					<Outlet />
 				</div>
