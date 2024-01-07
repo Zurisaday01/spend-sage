@@ -32,7 +32,6 @@
     "date-fns": "^3.0.6",
     "echarts": "^5.4.3",
     "echarts-for-react": "^3.0.2",
-    "i": "^0.3.7",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.293.0",
     "npm": "^10.2.4",
