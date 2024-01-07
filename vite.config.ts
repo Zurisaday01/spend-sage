@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,9 +24,19 @@ export default defineConfig({
 			],
 		},
 	},
+	build: {
+		rollupOptions: {
+			plugins: [
+				// Enable rollup polyfills plugin
+				// used during production bundling
+				rollupNodePolyFill(),
+			],
+		},
+	},
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
+			util: 'rollup-plugin-node-polyfills/polyfills/util',
 		},
 	},
 });
