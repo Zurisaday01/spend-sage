@@ -14,7 +14,7 @@ import {
 	formatAmount,
 	totalAmountPerCategory,
 	transactionsCountsPerCategory,
-} from '@/utils/utils';
+} from '@/utils';
 import { useState } from 'react';
 
 const Dashboard = () => {

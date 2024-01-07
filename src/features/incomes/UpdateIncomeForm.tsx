@@ -35,7 +35,7 @@ import toast from 'react-hot-toast';
 
 import MiniSpinner from '@/ui/MiniSpinner';
 import { CalendarIcon } from 'lucide-react';
-import { cn, formatDate, normalizedDate } from '@/utils/utils';
+import { cn, formatDate, normalizedDate } from '@/utils';
 import { useUpdateTransactionMutation } from '@/services/apiTransactions';
 import Spinner from '@/ui/Spinner';
 import { UpdateTransactionApiResponse } from '@/types';

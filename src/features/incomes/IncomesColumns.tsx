@@ -24,7 +24,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import { Transaction } from '@/types';
 import DeleteIncomeBtn from './DeleteIncomeBtn';
 import UpdateIncomeForm from './UpdateIncomeForm';
-import { formatAmount } from '@/utils/utils';
+import { formatAmount } from '@/utils';
 
 export const incomesColumns: ColumnDef<Transaction>[] = [
 	{

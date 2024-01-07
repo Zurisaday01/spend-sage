@@ -1,5 +1,5 @@
 import { Transaction } from '@/types';
-import { formatDate, normalizedDate } from '@/utils/utils';
+import { formatDate, normalizedDate } from '@/utils';
 import { eachDayOfInterval, format, isSameDay, endOfMonth } from 'date-fns';
 import {
 	Area,

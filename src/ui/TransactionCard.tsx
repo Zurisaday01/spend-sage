@@ -1,4 +1,4 @@
-import { formatAmount } from '@/utils/utils';
+import { formatAmount } from '@/utils';
 
 const TransactionCard = ({
 	type,

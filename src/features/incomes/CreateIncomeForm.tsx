@@ -38,7 +38,7 @@ import MiniSpinner from '@/ui/MiniSpinner';
 import { useCreateTransactionMutation } from '@/services/apiTransactions';
 import { Textarea } from '@/components/ui/textarea';
 import { CalendarIcon } from 'lucide-react';
-import { cn, formatDate, normalizedDate } from '@/utils/utils';
+import { cn, formatDate, normalizedDate } from '@/utils';
 import Spinner from '@/ui/Spinner';
 
 const formSchema = z.object({

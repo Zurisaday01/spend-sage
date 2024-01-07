@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { PAGE_SIZE } from '@/utils/utils';
+import { PAGE_SIZE } from '@/utils';
 import { useSearchParams } from 'react-router-dom';
 
 const Pagination = ({ count }: { count: number | undefined | null }) => {
@@ -26,7 +26,6 @@ const Pagination = ({ count }: { count: number | undefined | null }) => {
 		searchParams.set('page', prev.toString());
 		setSearchParams(searchParams);
 	}
-
 
 	if (pageCount <= 1) return null;
 	return (

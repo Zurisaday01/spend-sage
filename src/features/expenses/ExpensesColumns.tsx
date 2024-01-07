@@ -24,7 +24,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import { Transaction } from '@/types';
 import DeleteExpenseBtn from './DeleteExpenseBtn';
 import UpdateExpenseForm from './UpdateExpenseForm';
-import { formatAmount } from '@/utils/utils';
+import { formatAmount } from '@/utils';
 
 export const expensesColumns: ColumnDef<Transaction>[] = [
 	{

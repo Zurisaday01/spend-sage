@@ -1,5 +1,5 @@
 import supabase from '@/services/supabase';
-import { PAGE_SIZE } from '@/utils/utils';
+import { PAGE_SIZE } from '@/utils';
 import { baseApi } from './baseApi';
 
 export const apiCategories = baseApi.injectEndpoints({

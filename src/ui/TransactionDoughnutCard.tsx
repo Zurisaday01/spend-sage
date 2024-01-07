@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from '@/utils/utils';
+import { capitalizeFirstLetter } from '@/utils';
 import ReactEcharts from 'echarts-for-react';
 
 const TransactionDoughnutCard = ({
