@@ -2,16 +2,16 @@ import { Transaction } from '@/types';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+export function cn(...inputs: ClassValue[]) {
+	return twMerge(clsx(inputs));
+}
+
 interface CategoryCounts {
 	[key: string]: number;
 }
 
 interface TotalCategory {
 	[key: string]: number;
-}
-
-export function cn(...inputs: ClassValue[]) {
-	return twMerge(clsx(inputs));
 }
 
 export const PAGE_SIZE = 5;

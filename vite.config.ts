@@ -25,6 +25,7 @@ export default defineConfig({
 		},
 	},
 	build: {
+		sourcemap: true,
 		rollupOptions: {
 			plugins: [
 				// Enable rollup polyfills plugin
@@ -36,7 +37,6 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
-			util: 'rollup-plugin-node-polyfills/polyfills/util',
 		},
 	},
 });
