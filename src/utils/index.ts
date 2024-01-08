@@ -1,7 +1,7 @@
 import { Transaction } from '@/types';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import jwt, { JwtPayload } from 'jsonwebtoken';
+import  { JwtPayload, jwtDecode } from 'jwt-decode';
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -114,17 +114,16 @@ export const isTokenExpired = (token: string | null) => {
 	}
 
 	try {
-		const decodedToken: null | JwtPayload = jwt.decode(token, {
-			complete: true,
-		});
+		// Decode the token
+		const decodedToken: JwtPayload = jwtDecode(token);
 
-		if (!decodedToken || typeof decodedToken.payload.exp !== 'number') {
+		if (!decodedToken || typeof decodedToken.exp !== 'number') {
 			// Decoding failed or 'exp' field is missing, consider it expired
 			return true;
 		}
 
 		// Compare the expiration time with the current time
-		return decodedToken.payload.exp < Date.now() / 1000;
+		return decodedToken.exp < Date.now() / 1000;
 	} catch (error) {
 		// Decoding failed, consider it expired
 		return true;

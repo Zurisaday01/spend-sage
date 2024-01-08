@@ -1,44 +1,26 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import { resolve } from 'path';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
+// import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
+// import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
 // import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
+
+const root = resolve(__dirname, 'src');
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [react()],
-	optimizeDeps: {
-		esbuildOptions: {
-			// Node.js global to browser globalThis
-			define: {
-				global: 'globalThis',
-			},
-			// Enable esbuild polyfill plugins
-			plugins: [
-				NodeGlobalsPolyfillPlugin({
-					buffer: true,
-					process: true,
-				}),
-				NodeModulesPolyfillPlugin(),
-			],
-		},
-	},
-	build: {
-		sourcemap: true,
-		// rollupOptions: {
-		// 	plugins: [
-		// 		// Enable rollup polyfills plugin
-		// 		// used during production bundling
-		// 		rollupNodePolyFill(),
-		// 	],
-		// },
-	},
+	plugins: [react(), nodePolyfills()],
+
 	resolve: {
 		alias: {
-			'@': path.resolve(__dirname, './src'),
+			'@/components': resolve(root, 'components'),
+			'@/features': resolve(root, 'features'),
+			'@/ui': resolve(root, 'ui'),
+			'@/utils': resolve(root, 'utils'),
+			'@/services': resolve(root, 'services'),
+			'@/pages': resolve(root, 'pages'),
 			util: 'rollup-plugin-node-polyfills/polyfills/util',
-			sys: 'util',
 		},
 	},
 });
