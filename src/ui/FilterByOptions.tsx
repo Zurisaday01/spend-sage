@@ -11,7 +11,7 @@ import { getYear } from 'date-fns';
 import MiniSpinner from './MiniSpinner';
 import { useGetAllTransactionsQuery } from '@/services/apiTransactions';
 import { Button } from '@/components/ui/button';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 const FilterByOptions = ({
 	selectedYear,
