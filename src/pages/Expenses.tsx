@@ -5,8 +5,8 @@ import TransactionOptions from '@/ui/TransactionOptions';
 import { useState } from 'react';
 
 const Expenses = () => {
-	const [selectedYear, setSelectedYear] = useState('');
-	const [selectedMonth, setSelectedMonth] = useState('');
+	const [selectedYear, setSelectedYear] = useState('all');
+	const [selectedMonth, setSelectedMonth] = useState('all');
 	return (
 		<section className='flex flex-col gap-4'>
 			<HeaderFuntionality

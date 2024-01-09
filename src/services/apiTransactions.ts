@@ -74,16 +74,6 @@ export const apiTransactions = baseApi.injectEndpoints({
 							.lte('date', endOfYear.toISOString());
 					}
 
-					// if (year === 'all' && month === 'all') {
-					// 	const currentYear = new Date().getFullYear();
-					// 	const startOfYear = new Date(`${year || currentYear}-01-01`);
-					// 	const endOfYear = new Date(`${year}-12-31`);
-					// 	baseQuery = baseQuery
-					// 		.gte('date', startOfYear.toISOString())
-					// 		.lte('date', endOfYear.toISOString());
-					// }
-
-					// Get total count without pagination
 					const { count: totalCount } = await baseQuery;
 
 					// Pagination
@@ -136,8 +126,6 @@ export const apiTransactions = baseApi.injectEndpoints({
 					if (queryTitle) {
 						baseQuery = baseQuery.ilike('title', `%${queryTitle}%`);
 					}
-
-					console.log(year, month);
 
 					if (Number(year) && Number(month)) {
 						const startOfDate = new Date(`${year}-${month}-01`);

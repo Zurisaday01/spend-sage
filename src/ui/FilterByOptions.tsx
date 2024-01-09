@@ -30,31 +30,6 @@ const FilterByOptions = ({
 		transactionType,
 	});
 
-	console.log(selectedYear);
-
-	// console.log('year', selectedYear);
-	// console.log('month', selectedMonth);
-
-	// useEffect(() => {
-	// 	if (selectedYear && !selectedMonth) {
-	// 		setSelectedMonth('all');
-	// 	}
-	// }, [selectedMonth, selectedYear, setSelectedMonth]);
-
-	// useEffect(() => {
-	// 	if (selectedMonth && !selectedYear) {
-	// 		console.log('no year');
-	// 		setSelectedYear(new Date().getFullYear().toString());
-	// 	}
-	// }, [selectedMonth, selectedYear, setSelectedYear]);
-
-	// useEffect(() => {
-	// 	if (selectedYear === 'all') {
-	// 		setSelectedMonth('all');
-	// 		// setSelectedYear('all');
-	// 	}
-	// }, [selectedYear, setSelectedMonth]);
-
 	return (
 		<div className='flex flex-col sm:flex-row-reverse gap-2'>
 			<Button
@@ -92,7 +67,7 @@ const FilterByOptions = ({
 						</SelectContent>
 					</Select>
 					{selectedYear === 'all' && Number(selectedMonth) ? (
-						<p className='text-xs text-red-600'>Select a year</p>
+						<p className='text-xs text-red-600'>Choose a year to filter</p>
 					) : null}
 				</div>
 				<div className='w-full'>
