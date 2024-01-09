@@ -19,15 +19,19 @@ export const apiAuth = baseApi.injectEndpoints({
 
 					if (error) throw new Error(error.message);
 
-					console.log(user);
-
 					return { data: { user } };
 				} catch (error) {
 					console.log(error);
 					return { error: (error as Error).message };
 				}
 			},
-			providesTags: (_, error) => (!error ? ['User'] : []),
+			providesTags: result => {
+				if (result && result.user) {
+					return [{ type: 'User', id: result.user.user.id }] as const;
+				} else {
+					return [] as const;
+				}
+			},
 		}),
 		login: builder.mutation<
 			{ user: User; session: Session } | { error: unknown },
