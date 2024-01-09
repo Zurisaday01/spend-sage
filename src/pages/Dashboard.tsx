@@ -19,8 +19,8 @@ import { useState } from 'react';
 
 const Dashboard = () => {
 	// option values
-	const [selectedYear, setSelectedYear] = useState('');
-	const [selectedMonth, setSelectedMonth] = useState('');
+	const [selectedYear, setSelectedYear] = useState('all');
+	const [selectedMonth, setSelectedMonth] = useState('all');
 
 	const { data: expenses, isLoading: isLoadingExpenses } =
 		useGetExpensesTransactionQuery({
@@ -67,7 +67,6 @@ const Dashboard = () => {
 					selectedMonth={selectedMonth}
 					setSelectedMonth={setSelectedMonth}
 					setSelectedYear={setSelectedYear}
-					transactionType='expense'
 				/>
 				<p className='flex flex-col text-center sm:text-start text-secondary'>
 					<span>Current balance</span>

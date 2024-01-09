@@ -26,12 +26,12 @@ const PeriodGraph = ({
 }) => {
 	// Beginning of the current month
 	const startDate =
-		selectedMonth !== 'all' && selectedYear
+		selectedMonth !== 'all' && selectedYear !== 'all'
 			? new Date(+selectedYear, +selectedMonth - 1, 1)
 			: new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 
 	const endDate =
-		selectedMonth !== 'all' && selectedYear
+		selectedMonth !== 'all' && selectedYear !== 'all'
 			? endOfMonth(new Date(+selectedYear, +selectedMonth - 1))
 			: endOfMonth(startDate);
 

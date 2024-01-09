@@ -56,7 +56,7 @@ export const apiTransactions = baseApi.injectEndpoints({
 						baseQuery = baseQuery.ilike('title', `%${queryTitle}%`);
 					}
 
-					if (year && month !== 'all') {
+					if (Number(year) && Number(month)) {
 						const startOfDate = new Date(`${year}-${month}-01`);
 						const endOfDate = new Date(`${year}-${month}-31`);
 						endOfDate.setHours(23, 59, 59, 999);
@@ -65,7 +65,7 @@ export const apiTransactions = baseApi.injectEndpoints({
 							.lte('date', endOfDate.toISOString());
 					}
 
-					if (year && month === 'all') {
+					if (Number(year) && month === 'all') {
 						const currentYear = new Date().getFullYear();
 						const startOfYear = new Date(`${year || currentYear}-01-01`);
 						const endOfYear = new Date(`${year}-12-31`);
@@ -73,6 +73,15 @@ export const apiTransactions = baseApi.injectEndpoints({
 							.gte('date', startOfYear.toISOString())
 							.lte('date', endOfYear.toISOString());
 					}
+
+					// if (year === 'all' && month === 'all') {
+					// 	const currentYear = new Date().getFullYear();
+					// 	const startOfYear = new Date(`${year || currentYear}-01-01`);
+					// 	const endOfYear = new Date(`${year}-12-31`);
+					// 	baseQuery = baseQuery
+					// 		.gte('date', startOfYear.toISOString())
+					// 		.lte('date', endOfYear.toISOString());
+					// }
 
 					// Get total count without pagination
 					const { count: totalCount } = await baseQuery;
@@ -128,7 +137,9 @@ export const apiTransactions = baseApi.injectEndpoints({
 						baseQuery = baseQuery.ilike('title', `%${queryTitle}%`);
 					}
 
-					if (year && month !== 'all') {
+					console.log(year, month);
+
+					if (Number(year) && Number(month)) {
 						const startOfDate = new Date(`${year}-${month}-01`);
 						const endOfDate = new Date(`${year}-${month}-31`);
 						endOfDate.setHours(23, 59, 59, 999);
@@ -137,7 +148,7 @@ export const apiTransactions = baseApi.injectEndpoints({
 							.lte('date', endOfDate.toISOString());
 					}
 
-					if (year && month === 'all') {
+					if (Number(year) && month === 'all') {
 						const currentYear = new Date().getFullYear();
 						const startOfYear = new Date(`${year || currentYear}-01-01`);
 						const endOfYear = new Date(`${year}-12-31`);
