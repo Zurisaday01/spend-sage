@@ -11,8 +11,6 @@ const TransactionDoughnutCard = ({
 	data: { value: number; name: string }[];
 }) => {
 	const option = {
-		// width: '100%',
-		// height: '100%',
 		title: {
 			text: `${capitalizeFirstLetter(type)}s count by category`,
 			left: 'start',

@@ -7,6 +7,28 @@ import { baseApi } from './baseApi';
 
 export const apiAuth = baseApi.injectEndpoints({
 	endpoints: builder => ({
+		getCurrentUser: builder.query({
+			// @ts-expect-error data incompatible coming from supabase
+			queryFn: async () => {
+				try {
+					const { data: session } = await supabase.auth.getSession();
+					if (!session.session) return null;
+
+					// get the user from database validating user's access JWT
+					const { data: user, error } = await supabase.auth.getUser();
+
+					if (error) throw new Error(error.message);
+
+					console.log(user);
+
+					return { data: { user } };
+				} catch (error) {
+					console.log(error);
+					return { error: (error as Error).message };
+				}
+			},
+			providesTags: (_, error) => (!error ? ['User'] : []),
+		}),
 		login: builder.mutation<
 			{ user: User; session: Session } | { error: unknown },
 			Login
@@ -25,6 +47,12 @@ export const apiAuth = baseApi.injectEndpoints({
 				} catch (error) {
 					return { error: (error as Error).message };
 				}
+			},
+
+			invalidatesTags: (_, error) => {
+				if (error) return [];
+
+				return [{ type: 'User' }];
 			},
 		}),
 
@@ -61,6 +89,11 @@ export const apiAuth = baseApi.injectEndpoints({
 					return { error: (error as Error).message };
 				}
 			},
+			invalidatesTags: (_, error) => {
+				if (error) return [];
+
+				return [{ type: 'User' }];
+			},
 		}),
 
 		logOut: builder.mutation({
@@ -75,6 +108,12 @@ export const apiAuth = baseApi.injectEndpoints({
 				} catch (error) {
 					return { error: (error as Error).message };
 				}
+			},
+
+			invalidatesTags: (_, error) => {
+				if (error) return [];
+
+				return [{ type: 'User' }];
 			},
 		}),
 		updateCurrentUser: builder.mutation({
@@ -118,11 +157,17 @@ export const apiAuth = baseApi.injectEndpoints({
 					return { error: (error as Error).message };
 				}
 			},
+			invalidatesTags: (_, error) => {
+				if (error) return [];
+
+				return [{ type: 'User' }];
+			},
 		}),
 	}),
 });
 
 export const {
+	useGetCurrentUserQuery,
 	useLoginMutation,
 	useSignUpMutation,
 	useUpdateCurrentUserMutation,

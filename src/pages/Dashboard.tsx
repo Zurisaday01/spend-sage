@@ -1,3 +1,4 @@
+import { useGetCurrentUserQuery } from '@/services/apiAuth';
 import {
 	useGetExpensesTransactionQuery,
 	useGetIncomesTransactionQuery,
@@ -18,6 +19,8 @@ import {
 import { useState } from 'react';
 
 const Dashboard = () => {
+	// get user
+	const { isLoading: isLoadingCurrentUser } = useGetCurrentUserQuery({});
 	// option values
 	const [selectedYear, setSelectedYear] = useState('all');
 	const [selectedMonth, setSelectedMonth] = useState('all');
@@ -57,7 +60,8 @@ const Dashboard = () => {
 		incomes?.incomes as Transaction[] | undefined
 	);
 
-	if (isLoadingExpenses || isLoadingIncomes) return <Spinner />;
+	if (isLoadingExpenses || isLoadingIncomes || isLoadingCurrentUser)
+		return <Spinner />;
 
 	return (
 		<section className='flex flex-col gap-3'>
@@ -69,7 +73,7 @@ const Dashboard = () => {
 					setSelectedYear={setSelectedYear}
 				/>
 				<p className='flex flex-col text-center sm:text-start text-secondary'>
-					<span>Current balance</span>
+					<span>Balance</span>
 					<span className='text-3xl'>
 						{formatAmount.format(incomesAmount - expensesAmount)}
 					</span>

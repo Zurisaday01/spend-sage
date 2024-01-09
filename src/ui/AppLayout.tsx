@@ -16,6 +16,7 @@ interface ResponseLogOutApi {
 
 const AppLayout = () => {
 	const token = useSelector(selectToken);
+
 	const dispatch = useDispatch();
 	const [logOut] = useLogOutMutation();
 

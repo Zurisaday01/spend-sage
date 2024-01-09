@@ -37,6 +37,7 @@ const LoginForm = () => {
 	// redux and RTK query
 	const dispatch = useDispatch();
 	const [login, { isLoading, isSuccess }] = useLoginMutation();
+	// const { data: user, isLoading: isLoadingUser } = useGetCurrentUserQuery({});
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
