@@ -2,9 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
-// import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
-// import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
-// import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
 
 const root = resolve(__dirname, 'src');
 
