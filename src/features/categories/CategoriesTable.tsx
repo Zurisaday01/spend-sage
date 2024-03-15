@@ -84,7 +84,6 @@ const CategoriesTable = () => {
 	// I am getting a type error between the accessor and data columns
 	const table = useReactTable({
 		data: data?.categories ?? [],
-		// @ts-expect-error data incompatible between data and columns
 		columns,
 		onSortingChange: setSorting,
 		onColumnFiltersChange: setColumnFilters,

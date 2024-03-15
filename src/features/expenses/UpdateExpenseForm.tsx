@@ -128,7 +128,7 @@ const UpdateExpenseForm = ({
 		}
 	};
 
-	if (isLoading || isLoadingCategories || categories) return <Spinner />;
+	if (isLoading || isLoadingCategories) return <Spinner />;
 
 	return (
 		<Form {...form}>
@@ -216,13 +216,11 @@ const UpdateExpenseForm = ({
 										</SelectTrigger>
 										<SelectContent>
 											<SelectGroup>
-												{(categories as Category[]).map(
-													(category: Category) => (
-														<SelectItem key={category.id} value={category.name}>
-															{category.name}
-														</SelectItem>
-													)
-												)}
+												{categories?.categories?.map((category: Category) => (
+													<SelectItem key={category.id} value={category.name}>
+														{category.name}
+													</SelectItem>
+												))}
 											</SelectGroup>
 										</SelectContent>
 									</Select>
