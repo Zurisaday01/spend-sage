@@ -173,7 +173,7 @@ const CreateIncomeForm = () => {
 										</SelectTrigger>
 										<SelectContent>
 											<SelectGroup>
-												{categories?.categories.map(category => (
+												{categories?.categories?.map(category => (
 													<SelectItem key={category.id} value={category.name}>
 														{category.name}
 													</SelectItem>
