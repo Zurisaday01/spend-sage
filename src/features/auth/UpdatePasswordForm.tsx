@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import { updateCurrentUser as updateCurrentUserFromStore } from './authSlice';
 import MiniSpinner from '@/ui/MiniSpinner';
 import { useUpdateCurrentUserMutation } from '@/services/apiAuth';
-import { UpdatePassword, UpdateUserApiResponse } from '@/types';
+import { UpdatePassword, UserApiResponse } from '@/types';
 
 import toast from 'react-hot-toast';
 
@@ -48,9 +48,8 @@ const UpdatePasswordForm = () => {
 	const onSubmit = async (values: UpdatePassword) => {
 		try {
 			const { confirmPassword } = values;
-			console.log(confirmPassword);
 			// rtk query
-			const result: UpdateUserApiResponse = await updateCurrentUser({
+			const result: UserApiResponse = await updateCurrentUser({
 				password: confirmPassword,
 			});
 

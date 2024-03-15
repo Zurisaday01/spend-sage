@@ -1,16 +1,10 @@
 import { logOut as logOutStore } from '@/features/auth/authSlice';
 import { BiLogOut } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
-import { SerializedError } from '@reduxjs/toolkit';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { useLogOutMutation } from '@/services/apiAuth';
 import toast from 'react-hot-toast';
 import { baseApi } from '@/services/baseApi';
-
-interface ResponseLogOutApi {
-	data?: { success: boolean } | undefined;
-	error?: FetchBaseQueryError | SerializedError;
-}
+import { UserApiConfirmation } from '@/types';
 
 const LogoutBtn = ({ isOpen }: { isOpen: boolean }) => {
 	const dispatch = useDispatch();
@@ -18,7 +12,7 @@ const LogoutBtn = ({ isOpen }: { isOpen: boolean }) => {
 
 	const handleLogout = async () => {
 		try {
-			const result: ResponseLogOutApi = await logOut({});
+			const result: UserApiConfirmation = await logOut();
 
 			if (result.data?.success) {
 				// feedback

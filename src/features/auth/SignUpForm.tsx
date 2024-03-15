@@ -19,7 +19,7 @@ import { Link, useNavigate } from 'react-router-dom';
 // redux and RTK query
 import { setCredentials } from './authSlice';
 import { useDispatch } from 'react-redux';
-import { UserSignUpApiResponse } from '@/types';
+import { UserApiResponse } from '@/types';
 import { useSignUpMutation } from '@/services/apiAuth';
 
 const formSchema = z.object({
@@ -57,7 +57,7 @@ const SignUpForm = () => {
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		try {
 			// using login mutation
-			const result: UserSignUpApiResponse = await signUp(values);
+			const result: UserApiResponse = await signUp(values);
 
 			console.log(result);
 
@@ -107,7 +107,11 @@ const SignUpForm = () => {
 						<FormItem>
 							<FormLabel>Full Name</FormLabel>
 							<FormControl>
-								<Input placeholder='Your Full Name' {...field} />
+								<Input
+									placeholder='Your Full Name'
+									autoComplete='off'
+									{...field}
+								/>
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -120,7 +124,11 @@ const SignUpForm = () => {
 						<FormItem>
 							<FormLabel>Email</FormLabel>
 							<FormControl>
-								<Input placeholder='example@hotmail.com' {...field} />
+								<Input
+									placeholder='example@hotmail.com'
+									autoComplete='off'
+									{...field}
+								/>
 							</FormControl>
 							<FormMessage />
 						</FormItem>

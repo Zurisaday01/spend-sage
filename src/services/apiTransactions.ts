@@ -1,11 +1,11 @@
 import supabase from '@/services/supabase';
 import { PAGE_SIZE } from '@/utils';
 import { baseApi } from './baseApi';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 export const apiTransactions = baseApi.injectEndpoints({
 	endpoints: builder => ({
 		getAllTransactions: builder.query({
-			// @ts-expect-error data incompatible coming from supabase
 			queryFn: async ({ transactionType }: { transactionType?: string }) => {
 				try {
 					let query = supabase
@@ -25,12 +25,11 @@ export const apiTransactions = baseApi.injectEndpoints({
 
 					return { data: { transactions } };
 				} catch (error) {
-					return { error: (error as Error).message };
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 		}),
 		getIncomesTransaction: builder.query({
-			// @ts-expect-error data incompatible coming from supabase
 			queryFn: async ({
 				page,
 				year,
@@ -94,14 +93,13 @@ export const apiTransactions = baseApi.injectEndpoints({
 
 					return { data: { incomes, count } };
 				} catch (error) {
-					return { error: (error as Error).message };
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 			providesTags: result =>
 				result ? [{ type: 'Transactions', id: 'income' }] : [],
 		}),
 		getExpensesTransaction: builder.query({
-			// @ts-expect-error data incompatible coming from supabase
 			queryFn: async ({
 				page,
 				year,
@@ -166,15 +164,14 @@ export const apiTransactions = baseApi.injectEndpoints({
 
 					return { data: { expenses, count } };
 				} catch (error) {
-					return { error: (error as Error).message };
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 			providesTags: result =>
 				result ? [{ type: 'Transactions', id: 'expense' }] : [],
-			staleTime: 0,
+			// staleTime: 0,
 		}),
 		createTransaction: builder.mutation({
-			// @ts-expect-error data incompatible coming from supabase
 			queryFn: async ({
 				user_id,
 				date,
@@ -219,7 +216,7 @@ export const apiTransactions = baseApi.injectEndpoints({
 
 					return { data: { transaction } };
 				} catch (error) {
-					return { error: (error as Error).message };
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 			invalidatesTags: result =>
@@ -234,7 +231,6 @@ export const apiTransactions = baseApi.injectEndpoints({
 					: [],
 		}),
 		updateTransaction: builder.mutation({
-			// @ts-expect-error data incompatible coming from supabase
 			queryFn: async ({
 				id,
 				date,
@@ -278,7 +274,7 @@ export const apiTransactions = baseApi.injectEndpoints({
 					return { data: { transaction } };
 				} catch (error) {
 					console.log(error);
-					return { error: (error as Error).message };
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 			invalidatesTags: result =>
@@ -293,7 +289,6 @@ export const apiTransactions = baseApi.injectEndpoints({
 					: [],
 		}),
 		deleteTransaction: builder.mutation({
-			// @ts-expect-error data incompatible coming from supabase
 			queryFn: async ({ id }: { id: string }) => {
 				try {
 					const query = supabase.from('transactions').delete().eq('id', id);
@@ -304,7 +299,7 @@ export const apiTransactions = baseApi.injectEndpoints({
 
 					return { data: { success: true } };
 				} catch (error) {
-					return { error: (error as Error).message };
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 			invalidatesTags: () => ['Transactions'],

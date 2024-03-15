@@ -6,7 +6,7 @@ import MiniSpinner from './MiniSpinner';
 const UserAvatar = () => {
 	const navigate = useNavigate();
 
-	const { data: user, isLoading } = useGetCurrentUserQuery({});
+	const { data: user, isLoading } = useGetCurrentUserQuery();
 
 	return (
 		<div
@@ -18,7 +18,7 @@ const UserAvatar = () => {
 				<MiniSpinner />
 			) : (
 				<img
-					src={user?.user?.user?.user_metadata?.avatar || noUser}
+					src={user?.user?.user_metadata?.avatar || noUser}
 					alt='user'
 					className='object-cover object-center w-full h-full'
 				/>

@@ -5,14 +5,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut as logOutStore, selectToken } from '@/features/auth/authSlice';
 import { useLogOutMutation } from '@/services/apiAuth';
-import { SerializedError } from '@reduxjs/toolkit';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { isTokenExpired } from '@/utils';
+import {  UserApiConfirmation } from '@/types';
 
-interface ResponseLogOutApi {
-	data?: { success: boolean } | undefined;
-	error?: FetchBaseQueryError | SerializedError;
-}
 
 const AppLayout = () => {
 	const token = useSelector(selectToken);
@@ -24,7 +19,7 @@ const AppLayout = () => {
 		const checkTokenExpiration = async () => {
 			if (isTokenExpired(token)) {
 				// Token is expired, log out the user
-				const result: ResponseLogOutApi = await logOut({});
+				const result: UserApiConfirmation = await logOut();
 
 				if (result.data?.success) {
 					dispatch(logOutStore());

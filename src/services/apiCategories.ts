@@ -1,22 +1,21 @@
 import supabase from '@/services/supabase';
 import { PAGE_SIZE } from '@/utils';
 import { baseApi } from './baseApi';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
+import { QueryResultCategories, GetCategoriesParams, Category } from '@/types';
 
 export const apiCategories = baseApi.injectEndpoints({
 	endpoints: builder => ({
-		getCategories: builder.query({
-			// @ts-expect-error data incompatible coming from supabase
+		getCategories: builder.query<QueryResultCategories, GetCategoriesParams>({
 			queryFn: async ({
 				page,
 				type,
 				queryName,
 				userId,
-			}: {
-				page?: number;
-				type?: string;
-				queryName?: string;
-				userId: string | undefined;
-			}) => {
+			}: GetCategoriesParams): Promise<
+				QueryReturnValue<QueryResultCategories, FetchBaseQueryError>
+			> => {
 				try {
 					if (!userId)
 						throw new Error('Something is wrong with your authentification');
@@ -54,16 +53,18 @@ export const apiCategories = baseApi.injectEndpoints({
 
 					if (error) throw new Error(error.message);
 
-					return { data: { categories, count } };
+					return {
+						data: { categories: categories as Category[], count },
+					};
 				} catch (error) {
-					return { error: (error as Error).message };
+					console.log(error);
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 			providesTags: () => ['Categories'],
-			staleTime: 0,
+			// staleTime: 0,
 		}),
 		getCategory: builder.query({
-			// @ts-expect-error data incompatible coming from supabase
 			queryFn: async ({ categoryId }: { categoryId: number }) => {
 				try {
 					const query = supabase
@@ -77,12 +78,12 @@ export const apiCategories = baseApi.injectEndpoints({
 
 					return { data: { category } };
 				} catch (error) {
-					return { error: (error as Error).message };
+					console.log(error);
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 		}),
 		createCategory: builder.mutation({
-			// @ts-expect-error data incompatible coming from supabase
 			queryFn: async ({
 				user_id,
 				name,
@@ -111,13 +112,13 @@ export const apiCategories = baseApi.injectEndpoints({
 
 					return { data: { category } };
 				} catch (error) {
-					return { error: (error as Error).message };
+					console.log(error);
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 			invalidatesTags: () => ['Categories'],
 		}),
 		updateCategory: builder.mutation({
-			// @ts-expect-error data incompatible coming from supabase
 			queryFn: async ({
 				id,
 				name,
@@ -141,13 +142,12 @@ export const apiCategories = baseApi.injectEndpoints({
 					return { data: { category } };
 				} catch (error) {
 					console.log(error);
-					return { error: (error as Error).message };
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 			invalidatesTags: () => ['Categories'],
 		}),
 		deleteCategory: builder.mutation({
-			// @ts-expect-error data incompatible coming from supabase
 			queryFn: async ({ id }: { id: string }) => {
 				try {
 					const query = supabase.from('categories').delete().eq('id', id);
@@ -163,7 +163,8 @@ export const apiCategories = baseApi.injectEndpoints({
 
 					return { data: { success: true } };
 				} catch (error) {
-					return { error: (error as Error).message };
+					console.log(error);
+					return { error: error as FetchBaseQueryError };
 				}
 			},
 			invalidatesTags: () => ['Categories'],

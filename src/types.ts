@@ -53,50 +53,6 @@ export interface Transactions {
 	[type: string]: Transaction[];
 }
 
-// Api Responses
-
-export interface UserApiResponse {
-	data?:
-		| {
-				user: User;
-				session: Session;
-				// eslint-disable-next-line no-mixed-spaces-and-tabs
-		  }
-		| {
-				error: unknown;
-				// eslint-disable-next-line no-mixed-spaces-and-tabs
-		  };
-	error?: FetchBaseQueryError | SerializedError;
-}
-
-export interface UserSignUpApiResponse {
-	data?:
-		| {
-				user: User | null;
-				session: Session | null;
-				// eslint-disable-next-line no-mixed-spaces-and-tabs
-		  }
-		| {
-				error: unknown;
-				// eslint-disable-next-line no-mixed-spaces-and-tabs
-		  };
-	error?: FetchBaseQueryError | SerializedError;
-}
-
-export interface UpdateUserApiResponse {
-	data?:
-		| {
-				user: User;
-
-				// eslint-disable-next-line no-mixed-spaces-and-tabs
-		  }
-		| {
-				error: unknown;
-				// eslint-disable-next-line no-mixed-spaces-and-tabs
-		  };
-	error?: FetchBaseQueryError | SerializedError;
-}
-
 export interface CreateCategoryApiResponse {
 	data?:
 		| {
@@ -177,5 +133,43 @@ export interface UpdateTransactionApiResponse {
 				error: unknown;
 				// eslint-disable-next-line no-mixed-spaces-and-tabs
 		  };
+	error?: FetchBaseQueryError | SerializedError;
+}
+
+// Services Supabase Query Resuls
+export interface QueryResultUser {
+	user?: User | null;
+	session?: Session | null;
+}
+export interface QueryResultConfirmation {
+	success?: boolean;
+}
+
+// categories
+export interface QueryResultCategories {
+	categories: Category[] | null;
+	count: number | null;
+}
+
+export interface GetCategoriesParams {
+	page?: number;
+	type?: string;
+	queryName?: string;
+	userId: string | undefined;
+}
+
+// Api Responses
+export interface UserApiResponse {
+	data?: QueryResultUser;
+	error?: FetchBaseQueryError | SerializedError;
+}
+
+export interface ICredentials {
+	user: User;
+	token: string;
+}
+
+export interface UserApiConfirmation {
+	data?: QueryResultConfirmation;
 	error?: FetchBaseQueryError | SerializedError;
 }

@@ -38,7 +38,7 @@ import { CalendarIcon } from 'lucide-react';
 import { cn, formatDate, normalizedDate } from '@/utils';
 import { useUpdateTransactionMutation } from '@/services/apiTransactions';
 import Spinner from '@/ui/Spinner';
-import { UpdateTransactionApiResponse } from '@/types';
+import { Category, UpdateTransactionApiResponse } from '@/types';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../auth/authSlice';
 
@@ -128,7 +128,7 @@ const UpdateExpenseForm = ({
 		}
 	};
 
-	if (isLoading || isLoadingCategories) return <Spinner />;
+	if (isLoading || isLoadingCategories || categories) return <Spinner />;
 
 	return (
 		<Form {...form}>
@@ -216,11 +216,13 @@ const UpdateExpenseForm = ({
 										</SelectTrigger>
 										<SelectContent>
 											<SelectGroup>
-												{categories?.categories.map(category => (
-													<SelectItem key={category.id} value={category.name}>
-														{category.name}
-													</SelectItem>
-												))}
+												{(categories as Category[]).map(
+													(category: Category) => (
+														<SelectItem key={category.id} value={category.name}>
+															{category.name}
+														</SelectItem>
+													)
+												)}
 											</SelectGroup>
 										</SelectContent>
 									</Select>

@@ -18,7 +18,7 @@ import {
 } from './authSlice';
 import MiniSpinner from '@/ui/MiniSpinner';
 import { useUpdateCurrentUserMutation } from '@/services/apiAuth';
-import { UpdateCurrentUser, UpdateUserApiResponse } from '@/types';
+import { UpdateCurrentUser, UserApiResponse } from '@/types';
 import toast from 'react-hot-toast';
 import { useEffect, useMemo } from 'react';
 
@@ -63,7 +63,7 @@ const UpdateUserDataForm = () => {
 	const onSubmit = async (values: UpdateCurrentUser) => {
 		try {
 			// rtk query
-			const result: UpdateUserApiResponse = await updateCurrentUser(values);
+			const result: UserApiResponse = await updateCurrentUser(values);
 
 			if (result.data) {
 				// feedback

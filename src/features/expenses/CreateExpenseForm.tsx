@@ -31,7 +31,7 @@ import {
 
 import { useGetCategoriesQuery } from '@/services/apiCategories';
 import toast from 'react-hot-toast';
-import { CreateExpenseApiResponse } from '@/types';
+import { Category, CreateExpenseApiResponse } from '@/types';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../auth/authSlice';
 import MiniSpinner from '@/ui/MiniSpinner';
@@ -178,7 +178,7 @@ const CreateExpenseForm = () => {
 										</SelectTrigger>
 										<SelectContent>
 											<SelectGroup>
-												{categories?.categories.map(category => (
+												{categories?.categories?.map((category: Category) => (
 													<SelectItem key={category.id} value={category.name}>
 														{category.name}
 													</SelectItem>

@@ -20,7 +20,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { setCredentials } from './authSlice';
 import { useDispatch } from 'react-redux';
 import { useLoginMutation } from '@/services/apiAuth';
-import { UserApiResponse } from '@/types';
+import { ICredentials, UserApiResponse } from '@/types';
 
 const formSchema = z.object({
 	email: z.string().min(2, {
@@ -37,7 +37,6 @@ const LoginForm = () => {
 	// redux and RTK query
 	const dispatch = useDispatch();
 	const [login, { isLoading, isSuccess }] = useLoginMutation();
-	// const { data: user, isLoading: isLoadingUser } = useGetCurrentUserQuery({});
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -60,12 +59,13 @@ const LoginForm = () => {
 				if ('user' in result.data && 'session' in result.data) {
 					const { session, user } = result.data;
 
-					const credentials = { user, token: session.access_token };
+					const credentials = { user, token: session?.access_token };
 
 					// feedback
 					toast.success('Welcome again!!');
+
 					// dispatch to my redux store
-					dispatch(setCredentials(credentials));
+					dispatch(setCredentials(credentials as ICredentials));
 				} else {
 					console.error('Unexpected response structure:', result.data);
 				}
@@ -97,7 +97,11 @@ const LoginForm = () => {
 						<FormItem>
 							<FormLabel>Email</FormLabel>
 							<FormControl>
-								<Input placeholder='example@hotmail.com' {...field} />
+								<Input
+									placeholder='example@hotmail.com'
+									autoComplete='off'
+									{...field}
+								/>
 							</FormControl>
 							<FormMessage />
 						</FormItem>

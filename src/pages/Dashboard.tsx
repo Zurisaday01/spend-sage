@@ -20,7 +20,7 @@ import { useState } from 'react';
 
 const Dashboard = () => {
 	// get user
-	const { isLoading: isLoadingCurrentUser } = useGetCurrentUserQuery({});
+	const { isLoading: isLoadingCurrentUser } = useGetCurrentUserQuery();
 	// option values
 	const [selectedYear, setSelectedYear] = useState('all');
 	const [selectedMonth, setSelectedMonth] = useState('all');
