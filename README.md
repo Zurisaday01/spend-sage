@@ -45,116 +45,116 @@ Spend Sage is a modern web application designed to help users manage their finan
 
 ### Desktop
 
-![Log in Screenshot](/screenshots/login.png)
-![Sign in Screenshot](/screenshots/signup.png)
-![Dashboard Screenshot](/screenshots/dashboard.png)
-![Categories Screenshot](/screenshots/categories.png)
-![Expenses Screenshot](/screenshots/expenses.png)
-![Incomes Screenshot](/screenshots/incomes.png)
-![Account Screenshot](/screenshots/account.png)
+![Log in Screenshot](./public/screenshots/login.png)
+![Sign in Screenshot](./public//screenshots/signup.png)
+![Dashboard Screenshot](./public//screenshots/dashboard.png)
+![Categories Screenshot](./public//screenshots/categories.png)
+![Expenses Screenshot](./public//screenshots/expenses.png)
+![Incomes Screenshot](./public//screenshots/incomes.png)
+![Account Screenshot](./public//screenshots/account.png)
 
 ### Mobile
 
-![Log in Mobile Screenshot](/screenshots/login-mobile.png)
-![Sign in Mobile Screenshot](/screenshots/signup-mobile.png)
-![Dashboard Mobile Screenshot](/screenshots/dashboard-mobile.png)
-![Categories Mobile Screenshot](/screenshots/categories-mobile.png)
-![Expenses Mobile Screenshot](/screenshots/expenses-mobile.png)
-![Incomes Mobile Screenshot](/screenshots/incomes-mobile.png)
-![Account Mobile Screenshot](/screenshots/account-mobile.png)
+![Log in Mobile Screenshot](./public//screenshots/login-mobile.png)
+![Sign in Mobile Screenshot](./public//screenshots/signup-mobile.png)
+![Dashboard Mobile Screenshot](./public//screenshots/dashboard-mobile.png)
+![Categories Mobile Screenshot](./public//screenshots/categories-mobile.png)
+![Expenses Mobile Screenshot](./public//screenshots/expenses-mobile.png)
+![Incomes Mobile Screenshot](./public//screenshots/incomes-mobile.png)
+![Account Mobile Screenshot](./public//screenshots/account-mobile.png)
 
 ## Project Structure
 
-```markdown
-## Source Code Directory
+Source Code Directory
 
+```markdown
 └── 📁src
-└── App.tsx
-└── 📁components
-└── 📁ui
-└── button.tsx
-└── calendar.tsx
-└── checkbox.tsx
-└── dialog.tsx
-└── dropdown-menu.tsx
-└── form.tsx
-└── input.tsx
-└── label.tsx
-└── popover.tsx
-└── select.tsx
-└── table.tsx
-└── tabs.tsx
-└── textarea.tsx
-└── 📁features
-└── 📁auth
-└── LoginForm.tsx
-└── SignUpForm.tsx
-└── UpdatePasswordForm.tsx
-└── UpdateUserDataForm.tsx
-└── authSlice.ts
-└── 📁categories
-└── CategoriesColumns.tsx
-└── CategoriesTable.tsx
-└── CreateCategoryForm.tsx
-└── DeleteCategoryBtn.tsx
-└── UpdateCategoryForm.tsx
-└── 📁expenses
-└── CreateExpenseForm.tsx
-└── DeleteExpenseBtn.tsx
-└── ExpensesColumns.tsx
-└── ExpensesTable.tsx
-└── UpdateExpenseForm.tsx
-└── 📁incomes
-└── CreateIncomeForm.tsx
-└── DeleteIncomeBtn.tsx
-└── IncomesColumns.tsx
-└── IncomesTable.tsx
-└── UpdateIncomeForm.tsx
-└── index.css
-└── main.tsx
-└── 📁pages
-└── Account.tsx
-└── Categories.tsx
-└── Dashboard.tsx
-└── Expenses.tsx
-└── Incomes.tsx
-└── Login.tsx
-└── PageNotFound.tsx
-└── SignUp.tsx
-└── 📁services
-└── apiAuth.ts
-└── apiCategories.ts
-└── apiTransactions.ts
-└── baseApi.ts
-└── supabase.ts
-└── store.ts
-└── types.ts
-└── 📁ui
-└── AppLayout.tsx
-└── CategoriesCard.tsx
-└── CategoriesTabs.tsx
-└── FilterByOptions.tsx
-└── HamburgerBtn.tsx
-└── Header.tsx
-└── HeaderFuntionality.tsx
-└── Logo.tsx
-└── LogoutBtn.tsx
-└── MiniSpinner.tsx
-└── NavItem.tsx
-└── Navigation.tsx
-└── Pagination.tsx
-└── PeriodGraph.tsx
-└── ProtectedRoute.tsx
-└── SearchBar.tsx
-└── Sidebar.tsx
-└── Spinner.tsx
-└── TransactionCard.tsx
-└── TransactionDoughnutCard.tsx
-└── TransactionOptions.tsx
-└── UserAvatar.tsx
-└── 📁utils
-└── index.ts
-└── vite-env.d.ts
+    └── App.tsx
+    └── 📁components
+        └── 📁ui
+            └── button.tsx
+            └── calendar.tsx
+            └── checkbox.tsx
+            └── dialog.tsx
+            └── dropdown-menu.tsx
+            └── form.tsx
+            └── input.tsx
+            └── label.tsx
+            └── popover.tsx
+            └── select.tsx
+            └── table.tsx
+            └── tabs.tsx
+            └── textarea.tsx
+    └── 📁features
+        └── 📁auth
+            └── LoginForm.tsx
+            └── SignUpForm.tsx
+            └── UpdatePasswordForm.tsx
+            └── UpdateUserDataForm.tsx
+            └── authSlice.ts
+        └── 📁categories
+            └── CategoriesColumns.tsx
+            └── CategoriesTable.tsx
+            └── CreateCategoryForm.tsx
+            └── DeleteCategoryBtn.tsx
+            └── UpdateCategoryForm.tsx
+        └── 📁expenses
+            └── CreateExpenseForm.tsx
+            └── DeleteExpenseBtn.tsx
+            └── ExpensesColumns.tsx
+            └── ExpensesTable.tsx
+            └── UpdateExpenseForm.tsx
+        └── 📁incomes
+            └── CreateIncomeForm.tsx
+            └── DeleteIncomeBtn.tsx
+            └── IncomesColumns.tsx
+            └── IncomesTable.tsx
+            └── UpdateIncomeForm.tsx
+    └── index.css
+    └── main.tsx
+    └── 📁pages
+        └── Account.tsx
+        └── Categories.tsx
+        └── Dashboard.tsx
+        └── Expenses.tsx
+        └── Incomes.tsx
+        └── Login.tsx
+        └── PageNotFound.tsx
+        └── SignUp.tsx
+    └── 📁services
+        └── apiAuth.ts
+        └── apiCategories.ts
+        └── apiTransactions.ts
+        └── baseApi.ts
+        └── supabase.ts
+    └── store.ts
+    └── types.ts
+    └── 📁ui
+        └── AppLayout.tsx
+        └── CategoriesCard.tsx
+        └── CategoriesTabs.tsx
+        └── FilterByOptions.tsx
+        └── HamburgerBtn.tsx
+        └── Header.tsx
+        └── HeaderFuntionality.tsx
+        └── Logo.tsx
+        └── LogoutBtn.tsx
+        └── MiniSpinner.tsx
+        └── NavItem.tsx
+        └── Navigation.tsx
+        └── Pagination.tsx
+        └── PeriodGraph.tsx
+        └── ProtectedRoute.tsx
+        └── SearchBar.tsx
+        └── Sidebar.tsx
+        └── Spinner.tsx
+        └── TransactionCard.tsx
+        └── TransactionDoughnutCard.tsx
+        └── TransactionOptions.tsx
+        └── UserAvatar.tsx
+    └── 📁utils
+        └── index.ts
+    └── vite-env.d.ts
 ```
 
 ## Types of Visualizations Used in the Dashboard
