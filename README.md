@@ -267,3 +267,15 @@ export const {
 	useDeleteCategoryMutation,
 } = apiCategories;
 ```
+
+## Testing accounts
+1. **Email:**  
+   test01@example.com  
+   **Password:**  
+   test20
+
+2. **Email:**  
+   test02@example.com  
+   **Password:**  
+   test20
+   
