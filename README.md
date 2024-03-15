@@ -65,8 +65,8 @@ Spend Sage is a modern web application designed to help users manage their finan
 
 
 ## Demos
-![Video 1](https://drive.google.com/uc?export=download&id=1cusgpGVQrUpxcPDNv1vwThLDztwRvdW5)
-![Video 2](https://drive.google.com/uc?export=download&id=1NbQnbwq9KCq_BjHR1u9fQAuv6i9SyKla)
+https://github.com/Zurisaday01/spend-sage/assets/65831005/5b6f22c7-180c-416f-99f1-2b5b8706ea9f
+https://github.com/Zurisaday01/spend-sage/assets/65831005/4bc7a146-f6b3-4c8d-a2ee-095306cd9971
 
 ## Project Structure
 
